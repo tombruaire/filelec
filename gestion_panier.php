@@ -73,7 +73,7 @@ if (isset($_POST['payement'])) {
 
 	// Email pour confirmer l'achat du client
 	$header = "MIME-Version: 1.0\r\n";
-	$header .= 'From: "Filelec"<t.bruaire@gmail.com>'."\n"; // Voir dans le dossier 'sendmail'
+	$header .= 'From: "Filelec"<EMAIL_DU_COMPTE_NON_SECURISE>'."\n"; // Voir dossier 'sendmail'
 	$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
 	$header .= 'Content-Transfer-Encoding: 8bit';
 
