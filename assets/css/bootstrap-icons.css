@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "bootstrap-icons";
+    src: url("fonts/bootstrap-icons.woff2?30af91bf14e37666a085fb8a161ff36d") format("woff2"),
+         url("fonts/bootstrap-icons.woff?30af91bf14e37666a085fb8a161ff36d") format("woff");
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Icône panier (menu de navigation) */
+.bi-cart::before {
+    content: "\f242";
+}
+
+/* Icône commandes (menu de navigation) */
+.bi-box-seam::before {
+    content: "\f1c7";
+}
+
+/* Icône profil (menu de navigation) */
+.bi-person::before {
+    content: "\f4e1";
+}
+
+/* Icône déconnexion (menu de navigation) */
+.bi-power::before {
+    content: "\f4ff";
+}
+
+/* Icône NB Produits (page d'accueil) */
+.bi-camera-reels-fill::before {
+    content: "\f21a";
+}
+
+/* Icône NB Clients (page d'accueil) */
+.bi-people-fill::before {
+    content: "\f4cf";
+}
+
+/* Icône NB Commentaires (page d'accueil) */
+.bi-chat-left-fill::before {
+    content: "\f24e";
+}
+
+/* Icône connexion (formulaire) */
+.bi-person-circle::before {
+    content: "\f4d7";
+}
+
+/* Icône mdp-oublier (formulaire) */
+.bi-lock-fill::before {
+    content: "\f47a";
+}
+
+/* Icône inscription (formulaire) */
+.bi-person-plus::before {
+    content: "\f4dd";
+}
+
+/* Icône édition */
+.bi-pencil-square::before {
+    content: "\f4ca";
+}
+
+/* Icône suppresion */
+.bi-x-lg::before {
+    content: "\f659";
+}
+
+/* Icône calendrier (admin/histoClients) */
+.bi-table::before {
+    content: "\f5aa";
+}
+
+/* Icône Facebook (Footer) */
+.bi-facebook::before {
+    content: "\f344";
+}
+
+/* Icône Instagram (Footer) */
+.bi-instagram::before {
+    content: "\f437";
+}

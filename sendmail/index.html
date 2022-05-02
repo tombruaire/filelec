@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>sendmail</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+	<link rel="stylesheet" type="text/css" href="assets/css/prismjs.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="d-flex flex-column flex-root">
+	<div class="docs-page d-flex flex-row flex-column-fluid">
+		<div class="docs-content d-flex flex-column flex-column-fluid">
+			<div class="container">
+				<div class="card card-docs mb-2">
+					<div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+						<div class="px-md-10 pt-md-10 pb-md-5">
+							<div class="text-center mb-10">
+								<h1 class="fs-2tx fw-bolder mb-8">
+									<span class="d-inline-block position-relative ms-2">
+										<span class="d-inline-block mb-2">sendmail</span>
+										<span class="d-inline-block position-absolute h-8px bottom-0 end-0 start-0 bg-success translate rounded"></span>
+									</span>
+								</h1>
+							</div>
+							<div class="mb-10">
+								<ul class="fw-bold fs-3 text-dark">
+									<li class="mb-5">
+										Confirmation d'inscription par email
+										<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-check-circle ms-1" viewBox="0 0 16 16">
+  											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  											<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+										</svg>
+									</li>
+									<li class="mb-5">
+										Mot de passe oublié
+										<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-check-circle ms-1" viewBox="0 0 16 16">
+  											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  											<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+										</svg>
+									</li>
+									<li class="mb-5">
+										Page contact
+										<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-check-circle ms-1" viewBox="0 0 16 16">
+  											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  											<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+										</svg>
+									</li>
+								</ul>
+							</div>
+							<div class=" text-center mb-10">
+								<div class="card bg-warning">
+									<div class="card-body">
+										<h1 class="text-center text-light">
+											Ne fonctionne pas sur la connexion internet de l'école !
+										</h1>
+									</div>
+								</div>
+							</div>
+							<div class="text-center mb-10">
+								<div class="fw-bold fs-1 text-dark mb-5">
+									Tutoriel d'installation
+								</div>
+							</div>
+							<div class="row g-0">
+
+								<div class="card card-flush shadow-sm bg-secondary mb-10">
+									<div class="card-header">
+	 									<h1 class="card-title fs-1">Prérequis</h1>
+									</div>
+									<div class="card-body py-5">
+										<ul class="fw-bold fs-4 text-dark">
+											<li class="mb-10">
+												Avoir <u>3 comptes</u> Gmail :
+												<ul class="fw-bold fs-5 text-dark mt-3">
+													<li class="mb-5">1 compte <u>non sécurisé</u> <i class="text-gray-800">(qui ne possède pas d'identification en 2 étapes. Ex code de validation)</i></li>
+													<li class="mb-5">1 compte <u>support</u> <i class="text-gray-800">(Ex : contact-entreprise@gmail.com)</i></li>
+													<li class="mb-5">1 compte <u>test</u> <i class="text-gray-800">(Ex : votre compte personnel ou autre)</i></li>
+												</ul>
+											</li>
+											<li class="mb-5">
+												Avoir <u>télécharger</u> et <u>installer</u> un serveur local :
+												<ul class="fw-bold fs-5 text-dark mt-3">
+													<li class="mb-5">LAMP : <a href="https://doc.ubuntu-fr.org/lamp" target="_blank">https://doc.ubuntu-fr.org/lamp</a></li>
+													<li class="mb-5">MAMP : <a href="https://www.mamp.info/en/downloads/" target="_blank">https://www.mamp.info/en/downloads/</a></li>
+													<li class="mb-5">WAMP : <a href="https://www.wampserver.com/" target="_blank">https://www.wampserver.com/</a></li>
+													<li class="mb-5">XAMPP : <a href="https://www.apachefriends.org/fr/index.html" target="_blank">https://www.apachefriends.org/fr/index.html</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="card card-flush shadow-sm mb-10" style="background-color: #006400!important;">
+									<div class="card-header">
+	 									<h1 class="card-title fs-1">Obtenir un compte Gmail non sécurisé</h1>
+									</div>
+									<div class="card-body py-5">
+										<ul class="fw-bold fs-4 text-dark">
+											<li class="mb-5">Se connecter à un compte Gmail existant</li>
+											<li class="mb-5">Cliquer tout en haut à droite sur la photo de profil</li>
+											<li class="mb-5">Cliquer sur<code class="text-dark">Gérer votre compte Google</code></li>
+											<li class="mb-5">Se rendre dans la partie<code class="text-dark">Sécurité</code></li>
+											<li class="mb-5">Descendre un peu, puis se rendre dans la section<code class="text-dark">Accès moins sécurisé des applications</code></li>
+											<li class="mb-5">Cliquer sur<code class="text-dark">Activer l'accès</code></li>
+											<li class="mb-5">Cocher la case<code class="text-dark">Autoriser les applications moins sécurisées</code></li>
+											<li class="mb-5">Fermer le page</li>
+										</ul>
+									</div>
+								</div>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Présentation de sendmail</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-20" style="text-align: justify!important;">
+									sendmail est un programme simple permettant d'envoyer des messages électroniques en local via smtp et PHP. La plupart des hébergeurs possèdent leur propre sendmail à eux.
+								</p>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Pourquoi utiliser sendmail ?</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-20" style="text-align: justify!important;">
+									sendmail, lui, possède une utilisation assez simple et fonctionnelle.
+								</p>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Téléchargement de sendmail</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									<ul class="fw-bold fs-4 text-dark">
+										<li class="mb-5">
+											<code class="text-dark">download sendmail.zip</code>-> 
+											<a href="https://www.glob.com.au/sendmail/" target="_blank">
+												https://www.glob.com.au/sendmail/
+											</a>
+										</li>
+										<li class="mb-5">Enregistrer l'archive sur le Bureau</li>
+										<li class="mb-5"><a href="https://www.win-rar.com/start.html?&L=10" target="_blank">Décompresser</a> l'archive en créant un nouveau dossier nommé<code class="text-dark">sendmail</code></li>
+										<li class="mb-20">Déplacer ce dossier à la <u>racine</u> du serveur local. <u class="text-danger">PAS DANS LE DOSSIER DES PROJETS !!</u></li>
+									</ul>
+								</p>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Configuration de sendmail</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									<ul class="fw-bold fs-4 text-dark">
+										<li class="mb-5">Dans le dossier<code class="text-dark">sendmail</code>, ouvrir le fichier<code class="text-dark">sendmail.ini</code>avec un éditeur de code</li>
+										<li class="mb-5">Saisir les informations suivantes : 
+											<ul class="fw-bold fs-5 text-gray-800">
+												<li class="mb-5 mt-2">
+													<code class="text-dark">smtp_server</code> = smpt.gmail.com
+												</li>
+												<li class="mb-5">
+													<code class="text-dark">smtp_port</code> = 587
+												</li>
+												<li class="mb-5">
+													<code class="text-dark">;default_domain</code> = gmail.com
+												</li>
+												<li class="mb-5">
+													<code class="text-dark">auth_username</code> = <i class="fw-bold fs-5 text-gray-800">(saisir l'adresse du compte <u>non sécurisé</u>)</i>
+												</li>
+												<li class="mb-5">
+													<code class="text-dark">auth_password</code> = <i class="fw-bold fs-5 text-gray-800">(saisir le mot de passe du compte <u>non sécurisé</u>)</i>
+												</li>
+												<li class="mb-5">
+													<code class="text-dark">force_sender</code> = <i class="fw-bold fs-5 text-gray-800">(saisir l'adresse du compte <u>non sécurisé</u>)</i>
+												</li>
+											</ul>
+										</li>
+										<li class="mb-5">
+											Renseigner le chemin d'accès de<code class="text-dark">sendmail.exe</code>dans le fichier<code class="text-dark">php.ini</code>du server local :<code class="text-dark">sendmail_path</code>.
+											<div class="py-5">
+												<div class="highlight">
+													<u>LAMP</u> : etc -> php -> Version -> apache2 -> php.ini <i class="fw-bold fs-5 text-gray-800">(pas sûr)</i><button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+													<div class="highlight-code">
+														<pre class="language-bash"><code class="language-bash">sendmail_path = "/var/sendmail/sendmail.exe" (pas sûr)</code></pre>
+													</div>
+												</div>
+											</div>
+											<div class="mb-5">
+												<div class="highlight">
+													<u>MAMP</u> : Applications -> MAMP -> conf -> phpVersion -> php.ini<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+													<div class="highlight-code">
+														<pre class="language-bash"><code class="language-bash">sendmail_path = "/MAMP/sendmail/sendmail.exe"</code></pre>
+													</div>
+												</div>
+											</div>
+											<div class="mb-5">
+												<div class="highlight">
+													<u>WAMP</u> : C -> wamp64 -> bin -> apache -> apacheVersion -> bin -> php.ini<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+													<div class="highlight-code">
+														<pre class="language-bash"><code class="language-bash">sendmail_path = "C:\wamp64\sendmail\sendmail.exe"</code></pre>
+													</div>
+												</div>
+											</div>
+											<div class="mb-5">
+												<div class="highlight">
+													<u>XAMPP</u> : C -> xampp -> php -> php.ini<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+													<div class="highlight-code">
+														<pre class="language-bash"><code class="language-bash">sendmail_path = "C:\xampp\sendmail\sendmail.exe"</code></pre>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="mb-5">
+											<u>Désactiver</u> le port 25 du smpt dons le fichier<code class="text-dark">php.ini</code>du serveur local : <i class="fw-bold fs-5 text-gray-800">il suffit juste d'ajouter un ; avant smtp</i> <br><br>
+											<div class="highlight">
+												<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+												<div class="highlight-code">
+													<pre class="language-bash"><code class="language-bash">;smtp_port = 25</code></pre>
+												</div>
+											</div>
+										</li>
+										<li class="mb-5"><u class="text-danger">REDEMARRER LE SERVEUR LOCAL !!</u></li>
+									</ul>
+								</p>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Confirmation d'inscription par email</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									1 - Ajout des attributs<code class="text-dark">numero_confirmation</code>et<code class="text-dark">confirme</code>sur la table user
+								</p>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									Ces deux attributs vont permettrent de confirmer un compte user via un numero de confirmation <i class="fw-bold fs-5 text-gray-800">(numero_confirmation)</i> et de définir si le compte est confirmé ou non <i class="fw-bold fs-5 text-gray-800">(confirme)</i>
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-bash"><code class="language-bash">alter table user
+add (numero_confirmarion varchar(255), confirme int not null default 0);</code></pre>
+										</div>
+									</div>
+								</div>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									2 - Génération du numéro d'inscription. A placer dans le fichier php gérant l'inscription, après le<code class="text-dark">if(isset($_POST))</code>
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										Exemple<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">if (isset($_POST['Valider'])) {
+	$unControleur->setTable("user");
+	$longueurNumero = 15;										
+	$numero = "";
+	for ($i=1; $i<$longueurNumero; $i++) {
+		$numero .= mt_rand(0,9);
+	}
+	$tab = array(
+		"email"=>$_POST['email'];
+		// attributs...
+		"numero_confirmation"=>$numero,
+		"confirme"=>0, // Compte non confirmé à l'insertion
+		// attributs...
+		"role"=>"user"
+	);
+}</code></pre>
+										</div>
+									</div>
+								</div>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									3 - A placer après les vérifications nécessaires <i class="fw-bold fs-5 text-gray-800">(si les champs ne sont pas vides, etc...)</i>. N'oubliez pas le<code class="text-dark">$unControleur->insert($tab);</code> avant ou après, comme vous voulez.
+								</p>
+								<p class="fw-bold fs-5 text-warning mb-3" style="text-align: justify!important;">
+									N'oubliez pas changer l'url -><code class="text-dark">ctrl</code>+<code class="text-dark">f</code> -> activate
+								</p>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									<code class="text-dark">href="http://localhost/dossier_ppe/connexion?email='.urldecode($email).'&numero='.$numero.'"</code>
+								</p>
+								<div class="mb-5">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">$header = "MIME-Version: 1.0\r\n";
+$header .= 'From: "entreprise"&lt;EMAIL_DU_COMPTE_NON_SECURISE&gt;'."\n";
+$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
+$header .= 'Content-Transfer-Encoding: 8bit';
+
+$email = "$email";
+
+$message = '
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"&gt;
+&lt;body&gt;
+&lt;div role="article" aria-roledescription="email" aria-label="Verify Email Address" lang="en"&gt;
+    &lt;table style="font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+        &lt;tr&gt;
+            &lt;td align="center" style="--bg-opacity: 1; font-family: Montserrat, -apple-system, "Segoe UI", sans-serif;"&gt;
+                &lt;table class="sm-w-full" style="font-family: "Montserrat", Arial, sans-serif; width: 600px;" width="600" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" class="sm-px-24" style="font-family: "Montserrat", Arial, sans-serif;"&gt;
+                            &lt;table style="font-family: "Montserrat", Arial, sans-serif; width: 600px;" width="600" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                                &lt;tr&gt;
+                                    &lt;td class="sm-px-24" style="--bg-opacity: 1; background-color: rgb(24, 26, 27); font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; font-size: 14px; line-height: 24px; padding: 48px; text-align: left; --text-opacity: 1; color: #626262; color: rgba(98, 98, 98, var(--text-opacity));" bgcolor="rgba(255, 255, 255, var(--bg-opacity))" align="left"&gt;
+                                        &lt;p style="font-weight: 600; font-size: 18pt; margin-bottom: 0; color: #f8f9fa!important; text-align: center;"&gt;
+                                        	&lt;style type="text/css"&gt;.ii a[href] {color: aqua!important;}&lt;/style&gt;
+                                            Bienvenue &lt;font style="font-weight: 700; font-size: 18pt; margin-top: 0; --text-opacity: 1;"&gt;'.$email.'&lt;/font&gt; !
+                                        &lt;/p&gt;
+                                        &lt;p class="sm-leading-32" style="font-weight: 600; font-size: 20px; margin: 0 0 16px; --text-opacity: 1; color: #263238; margin-top: 5%; color: #f8f9fa!important; text-align: center;"&gt;
+                                            Merci pour votre inscription !
+                                        &lt;/p&gt;
+                                        &lt;p style="margin: 0 0 24px; color: #f8f9fa!important; text-align: center;"&gt;
+                                            Veuillez vérifier votre adresse email en cliquant sur le bouton ci-dessous afin d\'activer votre compte.
+                                        &lt;/p&gt;
+                                        &lt;table style="font-family: "Montserrat",Arial,sans-serif;" cellpadding="0" cellspacing="0" role="presentation" align="center"&gt;
+                                            &lt;tr&gt;
+                                                &lt;td&gt;
+                                                    &lt;a class="activate" style="display: block; font-weight: 600; font-size: 14px; line-height: 100%; padding: 16px 24px; --text-opacity: 1; color: #ffffff!important; text-decoration: none; background-color: #198754!important; border-color: #198754!important; border-radius: .25rem!important;" href="http://localhost/dossier_ppe/connexion?email='.urldecode($email).'&numero='.$numero.'"&gt;
+                                                        Activer mon compte
+                                                    &lt;/a&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/table&gt;&lt;br&gt;
+                                        &lt;table style="font-family: "Montserrat",Arial,sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="font-family: "Montserrat",Arial,sans-serif; padding-top: 32px; padding-bottom: 32px;"&gt;
+                                                    &lt;div style="--bg-opacity: 1; background-color: #eceff1; background-color: rgba(236, 239, 241, var(--bg-opacity)); height: 1px; line-height: 1px;"&gt;&zwnj;&lt;/div&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/table&gt;
+                                        &lt;p style="margin: 0 0 16px; text-align: center; color: #f8f9fa!important;"&gt;
+                                            Ceci est un mail automatique, merci de ne pas répondre.
+                                        &lt;/p&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;tr&gt;
+                            &lt;td style="font-family: "Montserrat",Arial,sans-serif; height: 20px;" height="20"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+';
+
+mail($email, "Confirmation de compte", $message, $header, $email);
+header('Location: index.php?page=X'); // Redirection vers la page de connexion
+exit();
+</code></pre>
+										</div>
+									</div>
+								</div>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									4 - A placer dans le fichier gérant la connexion
+								</p>
+								<div class="mb-20">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">// Confirmation du compte (une fois qu'on a cliquer sur 'Activer mon compte' depuis la boîte mail)
+if (isset($_GET['email'], $_GET['numero']) and !empty($_GET['email']) and !empty($_GET['numero'])) {
+	
+	$email = $_GET['email'];
+	$numero = $_GET['numero'];
+
+	$unControleur->setTable("user");
+	$where1 = array("email"=>$email, "numero_confirmation"=>$numero);
+	$unUser = $unControleur->selectWhereRowCount($where1); // 'selectWhereRowCount()' -> Voir mot de passe oublié plus bas
+	
+	if ($unUser == 1) {
+		if ($unUser['confirme'] == 0) {
+			// Confirmation du compte
+			$unControleur->setTable("user");
+			$tab = array("confirme"=>1);
+			$where2 = array("email"=>$email, "numero_confirmation"=>$numero);
+			$unControleur->update($tab, $where2);
+			echo "Votre compte a bien été confirmé !"; 
+			// (pensé à faire un 'select * from user;' dans la console pour vérifier tout de même)
+		} else {
+			echo "Votre compte a déjà été confirmé !";
+		}
+	} else {
+		header('Location: /dossier_ppe/');
+	}
+
+}</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<h2 class="fw-bold text-gray-800 mb-10">
+									<u>Mot de passe oublié</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									1 - Création de la table<code class="text-dark">recuperation</code>
+								</p>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									Cette table va servire à envoyer un code de vérification à l'adresse email fournis, pour ensuite réinitialiser le mot de passe de l'utilisateur.
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-bash"><code class="language-bash">Drop table if exists recuperation;
+Create table if not exists recuperation (
+	idrecup int(11) not null auto_increment,
+	email varchar(100) not null,
+	code int(11) not null,
+	confirme int not null default 0,
+	primary key (idrecup)
+) ENGINE=InnoDB;</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									2 - Création de la fonction<code class="text-dark">selectWhereRowCount()</code>
+								</p>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									Cette fonction va permettre de vérifier si l'adresse email saisi existe bien dans la table<code class="text-dark">user</code>. Vous pouvez l'appelé comme vous vous voulez, mais n'oubliez pas de modifier son nom dans le fichier<code class="text-dark">gestion_mdp.php</code>.
+								</p>
+								<div class="mb-5">
+									<div class="highlight">
+										modele/modele.class.php<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">public function selectWhereRowCount($where) {
+	if ($this->pdo != null) {
+		$champs = array();
+		$donnees = array();
+		foreach ($where as $key => $value) {
+			$champs[] = $key. " = :".$key;
+			$donnees[":".$key] = $value;
+		}
+		$chaineWhere = implode(" AND ", $champs);
+		$requete = "SELECT * FROM ".$this->uneTable." WHERE ".$chaineWhere;
+		$select = $this->pdo->prepare($requete);
+		$select->execute($donnees);
+		$select->fetch();
+		return $select->rowCount();
+	} else {
+		return null;
+	}
+}</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10">
+									<div class="highlight">
+										controleur/controleur.class.php<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">public function selectWhereRowCount($where) {
+	return $this->unModele->selectWhereRowCount($where);
+}</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<p class="fw-bold fs-5 text-warning mb-10" style="text-align: justify!important;">
+									Les fichiers nommés ci-dessous sont des exemples.
+								</p>
+
+								<p class="fw-bold fs-5 text-gray-800 mb-10" style="text-align: justify!important;">
+									Vous pouvez les appelés comme vous voulez :)
+								</p>
+								
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									3 - <code class="text-dark">index.php</code>: routeur (switch)
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">case "mdp" : require_once("gestion_mdp.php"); break;</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									4 - <code class="text-dark">gestion_mdp.php</code>
+								</p>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									Création d'une variable<code class="text-dark">$section</code>qui va permettre de définir 3 sections :
+									<ol class="fw-bold fs-5 text-gray-800">
+										<li class="mb-5">Saisie de l'adresse email</li>
+										<li class="mb-5">Saisie de code de vérification</li>
+										<li>Saisie du nouveau mot de passe</li>
+									</ol>
+								</p>
+								<div class="mb-5">
+									<div class="highlight">
+										Création de la variable $section<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">if (isset($_GET['section'])) {
+	$section = $_GET['section'];
+} else {
+	$section = null;
+}</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-5">
+									<div class="highlight">
+										SECTION 1 : Saisie de l'adresse email<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">if (isset($_POST['recupmdp'])) {
+	$recupmail = $_POST['recupmail'];
+	if ($recupmail != "") {
+		if (filter_var($recupmail, FILTER_VALIDATE_EMAIL)) {
+			$unControleur->setTable("user");
+			$where1 = array("email"=>$recupmail);
+			$unUser = $unControleur->selectWhere($where1);
+			if ($unUser == 0) {
+				echo "Adresse email incorrecte !";
+			} else {
+				$email = $unUser['email'];
+				$_SESSION['recupmail'] = $recupmail;
+
+				$recupcode = "";
+				for ($i=0; $i&lt;8; $i++) {
+					$recupcode .= mt_rand(0,9);
+				}
+
+				$unControleur->setTabel("recuperation"); // Table où est stocké le code
+				$where2 = array("email"=>$recupmail);
+				$recupmail_exist = $unControleur->selectWhereRowCount($where2); // 
+				if ($recupmail_exist == 1) {
+					$unControleur->setTable("recuperation");
+					$where3 = array("email"=>$recupmail);
+					$tab = array("code"=>$recupcode);
+					$recupupdate = $unControleur->edit($tab, $where3);
+				} else {
+					$unControleur->setTable("recuperation");
+					$tab = array(
+						"email"=>$recupmail;
+						"code"=>$recupcode;
+						"confirme"=>0
+					);
+					$recupinsert = $unControleur->insert($tab);
+				}
+
+				$header = "MIME-Version: 1.0\r\n";
+				$header .= 'From: "entreprise"&lt;EMAIL_DU_COMPTE_NON_SECURISE&gt;'."\n";
+				$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
+				$header .= 'Content-Transfer-Encoding: 8bit';
+
+				$message = '
+				&lt;!DOCTYPE html&gt;
+				&lt;html&gt;
+				&lt;head&gt;
+					&lt;meta charset="utf-8"&gt;
+				&lt;/head&gt;
+				&lt;body&gt;
+					&lt;h2&gt;Bonjour &lt;b&gt;'.$email.'&lt;/b&gt;,&lt;/h2&gt;&lt;br&gt;
+					&lt;p&gt;Voici votre code de récupération : &lt;b&gt;'.$recupcode.'&lt;/b&gt;&lt;/p&gt;
+				&lt;/body&gt;
+				&lt;/html&gt;
+				';
+
+				mail($recupmail, "Réinitialisation du mot de passe", $message, $header);
+				header('Location: index.php?page=X&#38;section=code'); // page vue/mdp.php
+			}
+		} else {
+			echo "Formet de l'adresse email incorrecte !";
+		}
+	} else {
+		echo "Veuillez saisir votre adresse email.";
+	}
+}</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-5">
+									<div class="highlight">
+										SECTION 2 : Saisie du code de vérification<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">if (isset($_POST['verif_submit'])) {
+	$verif_code = $_POST['verif_code'];
+	if ($verif_code != "") {
+		$unControleur->setTable("recuperation");
+		$where4 = array("email"=>$_SESSION['recupmail'], "code"=>$verif_code);
+		$success = $unControleur->selectWhere($where4);
+		if ($success = 0) {
+			echo "Code de vérification invalide !";
+		} else {
+			$unControleur->setTable("recuperation");
+			$where5 = array("email"=>$_SESSION['recupmail']);
+			$tab = array("confirme"=>1);
+			$unControleur->edit($tab, $where5);
+			header('Location: index.php?page=X&#38;section=changemdp'); // Redirection vers la page vue/mdp.php
+		}
+	} else {
+		echo "Veuillez saisir votre de code de vérification !";
+	}
+}
+</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-5">
+									<div class="highlight">
+										SECTION 3 : Saisie du nouveau mot de passe<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">if (isset($_POST['Modifier'])) {
+	$unControleur->setTable("recuperation");
+	$where6 = array("email"=>$_SESSION['recupmail']);
+	$verif_confirme = $unControleur->selectWhere($where6);
+	if ($verif_confirme['confirme'] == 1) {
+		$newmdp = $_POST['newmdp']; // Trigger pour hasher le mot de passe
+		$newmdp2 = $_POST['newmdp2'];
+		if ($newmdp != "") {
+			if ($newmdp 2 != "") {
+				if ($newmdp == $newmdp2) {
+
+					// Mise à jour du mdp de l'user dans la table user
+					$unControleur->setTable("user");
+					$where7 = array("email"=>$_SESSION['recupmail']);
+					$tab = array("mdp"=>$newmdp);
+					$unControleur->edit($tab, $where7);
+
+					// Suppression de l'email dans la table recuperation
+					$unControleur->setTable("recuperation");
+					$where8 = array("email"=>$_SESSION['recupmail']);
+					$unControleur->delete($where8);
+
+					// Déconnexion de l'user
+					unset($_SESSION['iduser']);
+					session_destroy();
+
+					// Redirection vers la page de connexion
+					header('Location: index.php?page=X');
+				} else {
+					echo "Les mots de passes ne correspondent pas !";
+				}
+			} else {
+				echo "Veuillez confirmer votre mot de passe !";
+			}
+		} else {
+			echo "Veuillez saisir un mot de passe !";
+		}
+	}
+}
+</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10">
+									<div class="highlight">
+										Appel de la vue<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">require_once("vue/mdp.php");</code></pre>
+										</div>
+									</div>
+								</div>
+								
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									3 - <code class="text-dark">vue/mdp.php</code>: Utilisation de <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/#starter-template" target="_blank">Bootstrap</a>
+								</p>
+								<div class="mb-5">
+									<div class="highlight">
+										header<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-html"><code class="language-html">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"&gt;</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-5">
+									<div class="highlight">
+										body (fin)<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-html"><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+										</div>
+									</div>
+								</div>
+								<div class="mb-20">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">&lt;div class="container d-flex flex-column"&gt;
+	&lt;div class="row h-100"&gt;
+		&lt;div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100 mb-5"&gt;
+			&lt;?php if ($section == 'code') { ?&gt;
+			&lt;div class="d-table-cell align-middle"&gt;
+				&lt;div class="mt-5"&gt;&lt;/div&gt;
+				&lt;div class="card bg-dark mt-1"&gt;
+					&lt;div class="card-header bg-dark text-light text-center"&gt;
+						&lt;h2&gt;Rénitialisation du mot de passe pour &lt;?= $_SESSION['recupmail'] ?&gt;&lt;/h1&gt;
+						&lt;p class="lead"&gt;Veuillez saisir votre code vérification ci-dessous : &lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class="card bg-dark mb-0 rounded"&gt;
+						&lt;div class="card-body"&gt;
+							&lt;div class="m-sm-4"&gt;
+								&lt;form method="post" action=""&gt;
+									&lt;div class="mb-3"&gt;
+										&lt;input type="text" name="verif_code" placeholder="Code de vérification" class="form-control form-control-lg bg-info text-dark"&gt;
+									&lt;/div&gt;
+									&lt;div class="text-center mt-1"&gt;
+										&lt;button type="submit" name="verif_submit" class="btn btn-lg btn-success text-light active"&gt;Valider&lt;/button&gt;
+									&lt;/div&gt;
+								&lt;/form&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;?php } elseif ($section == 'changemdp') { ?&gt;
+			&lt;div class="d-table-cell align-middle"&gt;
+				&lt;div class="mt-5"&gt;&lt;/div&gt;
+				&lt;div class="card bg-dark mt-1"&gt;
+					&lt;div class="card-header bg-dark text-light text-center"&gt;
+						&lt;h2&gt;Nouveau mot de passe pour &lt;?= $_SESSION['recupmail'] ?&gt;&lt;/h1&gt;
+						&lt;p class="lead"&gt;Veuillez saisir votre noveau mot de passe : &lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class="card bg-dark mb-0 rounded"&gt;
+						&lt;div class="card-body"&gt;
+							&lt;div class="m-sm-4"&gt;
+								&lt;form method="post" action=""&gt;
+									&lt;div class="mb-3"&gt;
+										&lt;input type="password" name="newmdp" placeholder="Nouveau mot de passe" class="form-control from-control-lg bg-info text-dark"&gt;
+									&lt;/div&gt;
+									&lt;div class="mb-3"&gt;
+										&lt;input type="password" name="newmdp2" placeholder="Confirmation du mot de passe" class="form-control from-control-lg bg-info text-dark"&gt;
+									&lt;/div&gt;
+									&lt;div class="text-center mt-1"&gt;
+										&lt;button type="submit" name="Modifier" class="btn btn-lg btn-success text-light active"&gt;Réinitialiser mon mot de passe&lt;/button&gt;
+									&lt;/div&gt;
+								&lt;/form&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;?php } else { ?&gt;
+			&lt;div class="d-table-cell align-middle"&gt;
+				&lt;div class="card bg-dark mt-4"&gt;
+					&lt;div class="card-header bg-dark text-light text-center"&gt;
+						&lt;h2&gt;Mot de passe oublié ?&lt;/h2&gt;
+						&lt;p class="lead"&gt;Saisissez votre adresse email ci-dessous : &lt;/p&gt;
+						&lt;p class="fw-bold"&gt;Un code de vérification vous sera envoyé.&lt;p&gt;
+					&lgt;/div&gt;
+					&lt;div class="card-body bg-dark rounded"&gt;
+						&lt;div class="m-sm-4"&gt;
+							&lt;form method="post" action=""&gt;
+								&lt;div class="mb-3"&gt;
+									&lt;input type="email" name="recupmail" placeholder="Saisissez votre adresse email" class="form-control form-control-lg bg-info text-dark"&gt;
+								&lt;/div&gt;
+								&lt;style type="text/css"&gt;
+									[type=email].form-control:focus {box-shadow: inset 0 0 0;}
+								&lt;/style&gt;
+								&lt;div class="text-center mt-1"&gt;
+									&lt;button type="submit" name="recupmdp" class="btn btn-lg btn-success text-light active"&gt;Recevoir un code de vérification&lt;/button&gt;
+								&lt;/div&gt;
+							&lt;/form&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;?php } ?&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<h2 class="fw-bold text-gray-800 mb-5">
+									<u>Page contact</u>
+								</h2>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									1 - <code class="text-dark">index.php</code>: routeur (switch)
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">case "contact" : require_once("gestion_contact.php"); break;</code></pre>
+										</div>
+									</div>
+								</div>
+								<p class="fw-bold fs-5 text-gray-800 mb-5" style="text-align: justify!important;">
+									2 - <code class="text-dark">gestion_contact.php</code>
+								</p>
+								<div class="mb-10">
+									<div class="highlight">
+										<button class="highlight-copy btn" data-bs-toggle="tooltip">copier</button>
+										<div class="highlight-code">
+											<pre class="language-php"><code class="language-php">// Si on clique sur le bouton d'envoi
+if (isset($_POST['submit'])) {
+
+	// Stockage de l'email posté dans une variable
+	$email = $_POST['email'];
+
+	// Stockage du sujet posté dans une variable
+	$sujet = $_POST['sujet'];
+
+	// Stockage du message posté dans une variable
+	$message = $_POST['message'];
+
+	// Vérification du contenu des champs (si les champs ne sont pas vides)
+	if ($email != "" && $sujet != "" && $message != "") {
+		
+		// Vérification du mot de l'adresse email posté
+		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+			// 2ème vérification de l'adresse email posté (pour être sûr)
+			if (preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,6}$#", $email)) {
+				
+				// En-tête de l'email
+				$header = "MIME-Version: 1.0\r\n";
+				$header .= 'From: "entreprise"&lt;EMAIL_DU_COMPTE_NON_SECURISE&gt;'."\n";
+				$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
+				$header .= 'Content-Transfer-Encoding: 8bit';
+
+				// Email envoyé au support (compte support)
+				$messageToSupport = '
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"&gt;
+&lt;body&gt;
+&lt;div role="article" aria-roledescription="email" aria-label="Verify Email Address" lang="en"&gt;
+    &lt;table style="font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+        &lt;tr&gt;
+            &lt;td align="center" style="--bg-opacity: 1; font-family: Montserrat, -apple-system, "Segoe UI", sans-serif;"&gt;
+                &lt;table class="sm-w-full" style="font-family: "Montserrat", Arial, sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" class="sm-px-24" style="font-family: "Montserrat", Arial, sans-serif;"&gt;
+                            &lt;table style="font-family: "Montserrat", Arial, sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                                &lt;tr&gt;
+                                    &lt;td class="sm-px-24" style="--bg-opacity: 1; background-color: rgb(24, 26, 27); font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; font-size: 14px; line-height: 24px; padding: 48px; text-align: left; --text-opacity: 1; color: #626262; color: rgba(98, 98, 98, var(--text-opacity));" align="left"&gt;
+                                        &lt;p style="font-weight: 600; font-size: 18pt; margin-bottom: 0; color: #212529!important; text-align: left; margin-left: 1%;"&gt;
+                                            Message envoyé avec l\'adresse :
+                                            &lt;font style="font-size: 18pt; color: green;"&gt;'.$_POST['email'].'&lt;/font&gt;
+                                        &lt;/p&gt;
+                                        &lt;br&gt;&lt;hr&gt;&lt;br&gt;
+                                        &lt;p class="sm-leading-32" style="font-weight: 600; font-size: 20px; margin: 0 0 16px; --text-opacity: 1; color: #263238; margin-left: 1%; color: #212529!important; text-align: left;"&gt;
+                                            '.nl2br($_POST['message']).'
+                                        &lt;/p&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;tr&gt;
+                            &lt;td style="font-family: "Montserrat",Arial,sans-serif; height: 20px;" height="20"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                ';
+
+                // Reception de l'email
+                mail("EMAIL_DU_SUPPORT", $sujet, $messageToSupport, $header);
+
+                // Message envoyé à l'expéditeur pour le remercier
+                $messageToExpediteur = '
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"&gt;
+&lt;body&gt;
+&lt;div role="article" aria-roledescription="email" aria-label="Verify Email Address" lang="en"&gt;
+    &lt;table style="font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+        &lt;tr&gt;
+            &lt;td align="center" style="--bg-opacity: 1; font-family: Montserrat, -apple-system, "Segoe UI", sans-serif;"&gt;
+                &lt;table class="sm-w-full" style="font-family: "Montserrat", Arial, sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" class="sm-px-24" style="font-family: "Montserrat", Arial, sans-serif;"&gt;
+                            &lt;table style="font-family: "Montserrat", Arial, sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                                &lt;tr&gt;
+                                    &lt;td class="sm-px-24" style="--bg-opacity: 1; background-color: rgb(24, 26, 27); font-family: Montserrat, -apple-system, "Segoe UI", sans-serif; line-height: 24px; padding: 48px; text-align: left; --text-opacity: 1; color: #626262; color: rgba(98, 98, 98, var(--text-opacity));" align="left"&gt;
+                                        &lt;p style="font-weight: 600; font-size: 14pt; margin-bottom: 0; color: #212529!important; text-align: left; margin-left: 1%;"&gt;
+                                            Bonjour,
+                                        &lt;/p&gt;&lt;br&gt;
+                                        &lt;p class="sm-leading-32" style="font-weight: 600; font-size: 14pt; margin: 0 0 16px; --text-opacity: 1; color: #263238; margin-left: 1%; color: #212529!important; text-align: left;"&gt;
+                                            Merci d\'avoir contacter le support !&lt;br&gt;
+                                            Votre message est en cours de traitement.
+                                        &lt;/p&gt;&lt;br&gt;
+                                        &lt;table style="font-family: "Montserrat",Arial,sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation"&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="font-family: "Montserrat",Arial,sans-serif; padding-top: 32px; padding-bottom: 32px;"&gt;
+                                                    &lt;div style="--bg-opacity: 1; background-color: #eceff1; background-color: rgba(236, 239, 241, var(--bg-opacity)); height: 1px; line-height: 1px;"&gt;&lt;/div&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/table&gt;
+                                        &lt;p style="margin: 0 0 16px; text-align: center; color: #212529!important;"&gt;
+                                            Ceci est un mail automatique, merci de ne pas répondre.
+                                        &lt;/p&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;tr&gt;
+                            &lt;td style="font-family: "Montserrat",Arial,sans-serif; height: 20px;" height="20"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                ';
+
+                // Réception de l'email par l'expéditeur
+                mail($email, "Entreprise", $messageToExpediteur, $header);
+                
+                // Redirection vers la page contact
+                header('Location: index.php?page=X');
+
+			} else {
+				echo "Format de l'adresse email incorrecte !";
+			}
+		} else {
+			echo "Format de l'adresse email incorrecte !";
+		}
+	} else {
+		echo "Tous les champs doivent êtres complétés !";
+	}
+}</code></pre>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="py-4 d-flex flex-lg-column py-6">
+				<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+					<div class="text-dark order-2 order-md-1">
+						<span class="text-muted fw-bold me-1">2022 © Copyright</span>
+						<div class="text-gray-800">Tom BRUAIRE</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+	<span class="svg-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+			<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+			<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+		</svg>
+	</span>
+</div>
+
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/prismjs.js"></script>
+<script src="assets/js/documentation.js"></script>
+
+</body>
+</html>
