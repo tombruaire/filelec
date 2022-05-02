@@ -83,7 +83,7 @@ if (isset($_POST['Connexion'])) {
 
 	            			// Envoi du nouveau mot de passe au client (email)
 	            			$header = "MIME-Version: 1.0\r\n";
-							$header .= 'From: "Filelec"<t.bruaire@gmail.com>'."\n";
+							$header .= 'From: "Filelec"<EMAIL_DU_COMPTE_NON_SECURISE>'."\n"; // Voir dossier 'sendmail'
 							$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
 							$header .= 'Content-Transfer-Encoding: 8bit';
 
@@ -186,7 +186,7 @@ if (isset($_POST['Connexion'])) {
 
 							// 5.a) Envoi du nouveau mot de passe au client (email)
 							$header = "MIME-Version: 1.0\r\n";
-							$header .= 'From: "Filelec"<t.bruaire@gmail.com>'."\n";
+							$header .= 'From: "Filelec"<EMAIL_DU_COMPTE_NON_SECURISE>'."\n"; // Voir dossier 'sendmail'
 							$header .= 'Content-Type:text/html; charset=utf-8"'."\n";
 							$header .= 'Content-Transfer-Encoding: 8bit';
 
