@@ -9,7 +9,7 @@ if (isset($_GET['view'])) {
 	$produitView = 1;
 	$idproduit = $_GET['view'];
 	$where1 = array("idproduit"=>$idproduit);
-	$leProduit = $unControleur->selectWhere("idproduit", $where1);
+	$leProduit = $unControleur->selectWhere("*", $where1);
 	$unControleur->setTable("commentaire");
 	$where2 = array("idproduit"=>$idproduit);
 	$nbCommentaires = $unControleur->countWhere($where2);
