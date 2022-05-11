@@ -8,15 +8,22 @@ if (isset($_SESSION['idclient'])) {
 	$lesPaniers = $unControleur->selectAllByPanier($where);
 }
 
-if (isset($_POST['Supprimer'])) {
-	$unControleur->setTable("vpanier");
-	$tab = array(
-		"numcommande"=>$_POST['numcommande'],
-		"idproduit"=>$_POST['idproduit'],
-		"idclient"=>$_POST['idclient']
+if (isset($_GET['action']) && isset($_GET['numcommande']) && isset($_GET['idproduit']) && isset($_GET['idclient'])) {
+    $action = $_GET['action'];
+    $numcommande = $_GET['numcommande'];
+    $idproduit = $_GET['idproduit'];
+    $idclient = $_GET['idclient'];
+    $tab = array(
+		"numcommande"=>$numcommande,
+		"idproduit"=>$idproduit,
+		"idclient"=>$idclient
 	);
-	$unControleur->appelProc("deleteCommande", $tab);
-	echo '<script language="javascript">document.location.replace("panier");</script>';
+    switch ($action) {
+        case 'sup': 
+            $unControleur->appelProc("deleteCommande", $tab);
+           	echo '<script language="javascript">document.location.replace("panier");</script>';
+            break;
+    }
 }
 
 if (isset($_POST['ModifierQte'])) {
