@@ -37,7 +37,6 @@
 								<?php if ($lesPaniers) { ?>
 									<?php foreach ($lesPaniers as $unPanier) {
 										$total = $total + $unPanier['prixproduit'] * $unPanier['quantite']; ?>
-										<input type="hidden" name="numcommande" value="<?= $unPanier['numcommande']; ?>">
 										<tr>
 											<td><?= $unPanier['idproduit']; ?></td>
 											<input type="hidden" name="idproduit" value="<?= $unPanier['idproduit']; ?>">
@@ -54,9 +53,9 @@
 												<button type="button" class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editQteProduit">
 													<i class="bi bi-pencil-square"></i>
 												</button>
-												<button name="Supprimer" class="btn btn-sm btn-outline-danger">
+												<a href="panier?action=sup&numcommande=<?= $unPanier['numcommande']; ?>&idproduit=<?= $unPanier['idproduit']; ?>&idclient=<?= $unPanier['idclient']; ?>" class="btn btn-sm btn-outline-danger">
 													<i class="bi bi-x-lg"></i>
-												</button>
+												</a>
 												<input type="hidden" name="nomProduit" value="<?= $unPanier['nomproduit']; ?>">
 											</td>
 										</tr>
