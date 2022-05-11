@@ -551,7 +551,7 @@ Create table panier (
     idproduit int(11) not null,
     quantite int(3) not null,
     idclient int(11) not null,
-    primary key (idproduit, idclient),
+    primary key (idproduit),
     foreign key (numcommande) references commande (numcommande)
     on update cascade
     on delete cascade,
@@ -603,7 +603,7 @@ Create table savepanier (
     idproduit int(11) not null,
     quantite int(3) not null,
     idclient int(11) not null,
-    primary key (idproduit, idclient),
+    primary key (idproduit),
     foreign key (numcommande) references savecommande (numcommande)
     on update cascade
     on delete cascade,
@@ -635,6 +635,7 @@ Begin
 End //
 Delimiter ;
 
+/*
 Drop trigger if exists transactionInsert2;
 Delimiter //
 Create trigger transactionInsert2
@@ -646,6 +647,7 @@ Begin
     where idproduit = new.idproduit;
 End //
 Delimiter ;
+*/
 
 Drop trigger if exists transactionUpdate;
 Delimiter //
@@ -683,6 +685,7 @@ Begin
 End //
 Delimiter ;
 
+/*
 Drop trigger if exists transactionDelete2;
 Delimiter //
 Create trigger transactionDelete2
@@ -694,6 +697,7 @@ Begin
     where idproduit = old.idproduit;
 End //
 Delimiter ;
+*/
 
 Drop trigger if exists calculInsert;
 Delimiter //
@@ -881,7 +885,9 @@ Delimiter //
 Create procedure deleteCommande(in p_numcommande int(8), in p_idproduit int(11), in p_idclient int(11))
 Begin
     delete from commande where numcommande = p_numcommande and idproduit = p_idproduit and idclient = p_idclient;
+    delete from savecommande where numcommande = p_numcommande and idproduit = p_idproduit and idclient = p_idclient;
     delete from panier where numcommande = p_numcommande and idproduit = p_idproduit and idclient = p_idclient;
+    delete from savepanier where numcommande = p_numcommande and idproduit = p_idproduit and idclient = p_idclient;
 End //
 Delimiter ;
 
@@ -1114,4 +1120,4 @@ order by t.libelle;
 
 call statsbdd('filelec');
 
-Select * from BDD;
+select * from BDD;
