@@ -68,7 +68,7 @@ if (isset($_POST['payement'])) {
 		"idproduit"=>$idproduit,
 		"numcommande"=>$numcommande
 	);
-	$insertFacture = $unControleur->appelProc("insertFacture", $tab3);
+	$unControleur->appelProc("insertFacture", $tab3);
 
 	$unControleur->setTable("commande");
 	$tab3 = array(
