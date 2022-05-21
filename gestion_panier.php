@@ -31,7 +31,7 @@ if (isset($_POST['ModifierQte'])) {
 	// Vérifier la quantité disponible du produit
 	$unControleur->setTable("produit");
 	$where = array("idproduit"=>$_POST['idproduit']);
-	$unProduit = $unControleur->selectWhere("idproduit", $where);
+	$unProduit = $unControleur->selectWhere("*", $where);
 
 	// Si la quantité du produit >= à la quantité souhaité
 	if ($unProduit['qteproduit'] >= $_POST['quantite']) {
